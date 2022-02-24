@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 08:21:01 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:21:02 by nattia           ###   ########.fr       */
+/*   Created: 2022/02/23 08:16:16 by nattia            #+#    #+#             */
+/*   Updated: 2022/02/23 08:16:24 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 char	**ft_split(char const *s, char c)
 {
@@ -71,26 +71,13 @@ int	ft_strchr(char *s, char c)
 	return (0);
 }
 
-int	calcule_l(char **p)
+void	ft_putstr(char *c)
 {
 	int	i;
 
 	i = 0;
-	while (p[0][i])
+	while (c[i] != '\0')
 	{
-		i++;
+		ft_putchar(c[i++]);
 	}
-	return (i);
-}
-
-int	calcule_w(char **p)
-{
-	int	i;
-
-	i = 0;
-	while (p[i])
-	{
-		i++;
-	}
-	return (i);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   walltest.c                                         :+:      :+:    :+:   */
+/*   walltest_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 08:21:05 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:21:06 by nattia           ###   ########.fr       */
+/*   Created: 2022/02/23 08:15:14 by nattia            #+#    #+#             */
+/*   Updated: 2022/02/23 08:15:17 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	walltest(char **p, t_map *test)
 {
@@ -74,4 +74,21 @@ int	check_lines(char **p, t_map *test)
 		return (0);
 	}
 	return (1);
+}
+
+void	ft_mainhelper_to(t_variable *variable)
+{
+	variable->l = calcule_l(variable->p);
+	variable->w = calcule_w(variable->p);
+	variable->mlx = mlx_init();
+	variable->mlx_win = mlx_new_window(variable->mlx, (variable->l * 100),
+			(variable->w * 100), "so_long");
+}
+
+void	ft_helper_help(t_variable *variable, char **c)
+{
+	ft_main_helper(c);
+	ft_mainhelper_to(variable);
+	ft_converter(variable);
+	ft_rander(variable);
 }

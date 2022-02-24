@@ -5,16 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: nattia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/23 08:08:41 by nattia            #+#    #+#              #
-#    Updated: 2022/02/23 08:08:48 by nattia           ###   ########.fr        #
+#    Created: 2022/02/23 08:19:25 by nattia            #+#    #+#              #
+#    Updated: 2022/02/23 08:19:26 by nattia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME  =  so_long
 
-SRCS = so_long.c utils.c testeur_map.c converter.c finder.c rander.c walltest.c\
-keyhoks_up_left.c keyhoks_down_right.c parcing_map.c utils_to.c ft_putstr.c ft_strncmp.c\
-ft_strrchr.c ft_putnbr.c
+SRCS = so_long_bonus.c utils_bonus.c testeur_map_bonus.c converter_bonus.c finder_bonus.c rander_bonus.c walltest_bonus.c keyhoks_up_left_bonus.c keyhoks_down_right_bonus.c\
+parcing_map_bonus.c utils_to_bonus.c  enemiefinder_bonus.c  itoa_bonus.c enemierander_bonus.c  anim_bonus.c utilstree_bonus.c
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -25,11 +24,11 @@ all = $(NAME)
 CC = gcc
 
 
-$(NAME): $(SRCS) $(OBJ) so_long.h
+$(NAME): $(SRCS) $(OBJ) so_long_bonus.h
 	$(CC) $(FLAGS) $(SRCS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
-%.o: %.c
-	$(CC)  $(FLAGS) -c $<
+%.o : %.c
+	@$(CC) $(FLAGS) -c $<
 
 clean : 
 	@rm -rf $(OBJ)

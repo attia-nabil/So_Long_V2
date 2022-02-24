@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testeur_map.c                                      :+:      :+:    :+:   */
+/*   testeur_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 08:20:51 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:20:53 by nattia           ###   ########.fr       */
+/*   Created: 2022/02/23 08:16:29 by nattia            #+#    #+#             */
+/*   Updated: 2022/02/23 08:17:04 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	p_check(char **p, int n, int m)
 {
@@ -26,7 +26,8 @@ int	p_check(char **p, int n, int m)
 		j = 0;
 		while (j < m)
 		{
-			if (p[i][j] == 'P' || p[i][j] == 'C' || p[i][j] == 'E')
+			if (p[i][j] == 'P' || p[i][j] == 'C' ||
+					p[i][j] == 'E' || p[i][j] == 'N')
 			{
 				t += 1;
 			}
@@ -99,7 +100,8 @@ int	check_othercarecter(char **p, t_map *test)
 		{
 			if (p[test->q][test->w] != '0' && p[test->q][test->w] != '1'
 					&& p[test->q][test->w] != 'P'
-					&& p[test->q][test->w] != 'C' && p[test->q][test->w] != 'E')
+					&& p[test->q][test->w] != 'C' && p[test->q][test->w]
+					!= 'E' && p[test->q][test->w] != 'N')
 			{
 				return (0);
 			}
@@ -128,7 +130,8 @@ int	testeur_map(char **p, t_map *test)
 	y += allcaracter_check(p, test->n, test->m, 'C');
 	y += allcaracter_check(p, test->n, test->m, 'P');
 	y += allcaracter_check(p, test->n, test->m, 'E');
-	if (y < 3)
+	y += allcaracter_check(p, test->n, test->m, 'N');
+	if (y < 4)
 		return (0);
 	return (1);
 }

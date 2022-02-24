@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   parcing_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 08:20:12 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:20:13 by nattia           ###   ########.fr       */
+/*   Created: 2022/02/23 08:19:29 by nattia            #+#    #+#             */
+/*   Updated: 2022/02/23 08:19:30 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	ft_putstr(char *s)
+char	**parcing_map(int fd, char *tr)
 {
-	while (*s)
+	char	str;
+	int		b;
+	int		h;
+	char	**k;
+
+	b = 1;
+	h = 0;
+	while (b != 0)
 	{
-		ft_putchar(*s++);
+		b = read(fd, &str, 1);
+		if (b != 0)
+			tr[h++] = str;
+		tr[h] = '\0';
 	}
+	close(fd);
+	k = ft_split(tr, '\n');
+	return (k);
 }

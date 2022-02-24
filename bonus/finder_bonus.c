@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   finder_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 08:20:12 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:20:13 by nattia           ###   ########.fr       */
+/*   Created: 2022/02/23 08:19:10 by nattia            #+#    #+#             */
+/*   Updated: 2022/02/23 08:19:12 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	ft_putstr(char *s)
+void	ft_finder(t_variable *p)
 {
-	while (*s)
+	p->i = 0;
+	p->j = 0;
+	while (p->p[p->i])
 	{
-		ft_putchar(*s++);
+		p->j = 0;
+		while (p->p[p->i][p->j])
+		{
+			if (p->p[p->i][p->j] == 'P')
+			{
+				return ;
+			}
+			p->j++;
+		}
+		p->i++;
 	}
 }

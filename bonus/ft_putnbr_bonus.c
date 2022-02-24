@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 08:20:12 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:20:13 by nattia           ###   ########.fr       */
+/*   Created: 2022/02/23 08:19:14 by nattia            #+#    #+#             */
+/*   Updated: 2022/02/23 08:19:16 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	ft_putstr(char *s)
+void	ft_putnbr(int n)
 {
-	while (*s)
+	long	n1;
+
+	n1 = n;
+	if (n1 >= 0 && n1 <= 9)
 	{
-		ft_putchar(*s++);
+		ft_putchar(n1 + 48);
+	}
+	if (n1 >= 10)
+	{
+		ft_putnbr(n1 / 10);
+		ft_putchar(n1 % 10 + 48);
 	}
 }

@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   enemierander_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 08:20:19 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:20:20 by nattia           ###   ########.fr       */
+/*   Created: 2022/02/23 08:19:06 by nattia            #+#    #+#             */
+/*   Updated: 2022/02/23 08:19:09 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	enemie_rander(t_variable *p)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (s[i])
-		i++;
-	j = i;
-	i--;
-	while (i >= 0)
+	if (p->p[p->up][p->down - 1] != '1' && p->p[p->up][p->down - 1] != 'C'
+			&& p->p[p->up][p->down - 1] != 'P')
 	{
-		if (s[i] == (char)c)
+		if (p->p[p->up][p->down] == 'N')
 		{
-			return ((char *)&s[i]);
+			p->p[p->up][p->down] = '0';
+			p->p[p->up][p->down - 1] = 'N';
+			p->down -= 1;
 		}
-		i--;
 	}
-	if (c == '\0')
+	ft_animation(p);
+	if (p->p[p->i][p-> j + 1] == 'N' || p->p[p->i][p->j - 1] == 'N')
 	{
-		return ((char *)&s[j]);
+		ft_putstr("you lose");
+		exit (0);
 	}
-	return (NULL);
 }
