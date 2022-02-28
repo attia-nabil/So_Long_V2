@@ -6,7 +6,7 @@
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:20:43 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:20:44 by nattia           ###   ########.fr       */
+/*   Updated: 2022/02/28 13:16:18 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	main_too(int ac, char **c, int fd)
 	if (fd == -1)
 	{
 		ft_putstr("error parametre map");
-		exit_mapt (0);
+		exit(0);
 	}
 }
 
