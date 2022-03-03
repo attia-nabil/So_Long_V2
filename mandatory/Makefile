@@ -6,7 +6,7 @@
 #    By: nattia <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 08:08:41 by nattia            #+#    #+#              #
-#    Updated: 2022/02/23 08:08:48 by nattia           ###   ########.fr        #
+#    Updated: 2022/03/02 16:59:18 by nattia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,12 @@ FLAGS = -Wall -Wextra -Werror
 
 OBJ = $(SRCS:.c=.o)
 
-all = $(NAME)
+all: $(NAME)
 
 CC = gcc
 
+# debug: FLAGS+=-g
+# debug: all
 
 $(NAME): $(SRCS) $(OBJ) so_long.h
 	$(CC) $(FLAGS) $(SRCS) -lmlx -framework OpenGL -framework AppKit -o $(NAME)

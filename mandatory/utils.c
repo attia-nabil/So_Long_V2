@@ -6,7 +6,7 @@
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:21:01 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:21:02 by nattia           ###   ########.fr       */
+/*   Updated: 2022/03/02 21:01:55 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ char	**ft_split(char const *s, char c)
 
 	count = countword(s, c);
 	f = 0;
-	ar = (char **)malloc(sizeof(char *) * (count + 1));
+	ar = (char **)malloc(sizeof(char *) * (count + 1)); // unprotected alloc
 	if (!ar || !s)
-		return (NULL);
+		exit(0);
 	while (f < count)
 	{
 		s = skipspace(s, c);
 		len = lenword(s, c);
-		ar[f] = (char *)malloc(sizeof(char) * (len + 1));
+		ar[f] = (char *)malloc(sizeof(char) * (len + 1));  // unprotected alloc
 		if (!ar[f])
-			return (ft_free(ar));
+			return (ft_free(ar), exit(1), NULL);
 		k = 0;
 		while (k < len)
 			ar[f][k++] = *s++;
@@ -76,7 +76,7 @@ int	calcule_l(char **p)
 	int	i;
 
 	i = 0;
-	while (p[0][i])
+	while (p[0] && p[0][i])
 	{
 		i++;
 	}

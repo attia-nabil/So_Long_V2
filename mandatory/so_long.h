@@ -6,7 +6,7 @@
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:20:46 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:20:47 by nattia           ###   ########.fr       */
+/*   Updated: 2022/03/02 22:46:49 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct so_long_tester
 	int	w;
 	int	t;
 	int	c;
+	int	pi;
+	int	pj;
 }t_map;
 
 char		**ft_split(char const *s, char c);
@@ -86,4 +88,5 @@ void		ft_putnbr(int n);
 void		main_too(int ac, char **c, int fd);
 int			calcule_w(char **p);
 int			calcule_l(char **p);
+int			check_otherp(char **p, t_map *test);
 #endif

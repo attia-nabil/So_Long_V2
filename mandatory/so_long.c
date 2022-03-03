@@ -6,7 +6,7 @@
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:20:43 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/28 13:16:18 by nattia           ###   ########.fr       */
+/*   Updated: 2022/03/02 22:51:33 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,31 @@ int	ft_exit(void)
 
 void	main_too(int ac, char **c, int fd)
 {
+	char	*dot;
+
 	if (ac != 2)
 	{
 		ft_putstr("error parametre");
 		exit(0);
 	}
-	if (ft_strncmp(ft_strrchr(c[1], '.'), ".ber", 5) != 0)
+	dot = ft_strrchr(c[1], '.');
+	if (!dot || ft_strncmp(dot, ".ber", 5) != 0)
 	{
 		ft_putstr("error parametre .ber nedded");
 		exit(0);
 	}
 	if (fd == -1)
 	{
-		ft_putstr("error parametre map");
+		perror("open");
 		exit(0);
 	}
+}
+
+static void	__norm(t_variable *variable)
+{
+	variable->l = calcule_l(variable->p);
+	variable->w = calcule_w(variable->p);
+	variable->mlx = mlx_init();
 }
 
 int	main(int ac, char **c)
@@ -63,9 +73,9 @@ int	main(int ac, char **c)
 	fd = open(c[1], O_RDONLY);
 	main_too(ac, c, fd);
 	variable.p = parcing_map(fd, tr);
-	variable.l = calcule_l(variable.p);
-	variable.w = calcule_w(variable.p);
-	variable.mlx = mlx_init();
+	if (!variable.p[0])
+		return (ft_putstr("empty map\n"), free(variable.p), 0);
+	__norm(&variable);
 	variable.n = testeur_map(variable.p, &so_te);
 	if (variable.n == 0)
 	{
@@ -76,8 +86,8 @@ int	main(int ac, char **c)
 			(variable.w * 100), "so_long");
 	ft_converter(&variable);
 	ft_rander(&variable);
-	mlx_key_hook(variable.mlx_win, key_hook, &variable);
-	mlx_hook(variable.mlx_win, 17, (1L << 17), ft_exit, &variable);
+	mlx_hook(variable.mlx_win, 2, 0, key_hook, &variable);
+	mlx_hook(variable.mlx_win, 17, 0, ft_exit, &variable);
 	variable.k = so_te.c;
 	mlx_loop(variable.mlx);
 }

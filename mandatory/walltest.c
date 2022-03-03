@@ -6,7 +6,7 @@
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:21:05 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:21:06 by nattia           ###   ########.fr       */
+/*   Updated: 2022/03/02 16:50:26 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	initialisation(t_map *test)
 	test->q = 0;
 	test->q = 0;
 	test->t = 0;
+	test->pi = 0;
+	test->pj = 0;
 }
 
 int	check_lines(char **p, t_map *test)
@@ -74,4 +76,30 @@ int	check_lines(char **p, t_map *test)
 		return (0);
 	}
 	return (1);
+}
+
+int	check_otherp(char **p, t_map *test)
+{
+	int	i;
+
+	i = 0;
+	while (p[test->pi] && test->pi < test->n)
+	{
+		test->pj = 0;
+		while (test->pj < test->m)
+		{
+			if (p[test->pi][test->pj] == 'P')
+			{
+				i++;
+			}
+			test->pj++;
+		}
+		test->pi++;
+	}
+	if (i != 1)
+	{
+		return (0);
+	}
+	else
+		return (1);
 }

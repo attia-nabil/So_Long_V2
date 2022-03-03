@@ -6,7 +6,7 @@
 /*   By: nattia <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 08:20:51 by nattia            #+#    #+#             */
-/*   Updated: 2022/02/23 08:20:53 by nattia           ###   ########.fr       */
+/*   Updated: 2022/03/02 16:51:41 by nattia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ int	testeur_map(char **p, t_map *test)
 		return (0);
 	test->n = 0;
 	if (walltest(p, test) == 0)
+		return (0);
+	if (check_otherp(p, test) == 0)
 		return (0);
 	if (check_othercarecter (p, test) == 0)
 		return (0);
